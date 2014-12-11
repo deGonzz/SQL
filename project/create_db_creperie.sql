@@ -73,15 +73,17 @@ CREATE TABLE zip_codes
     -- zip functionally determines state
     zip VARCHAR(20),
     state VARCHAR(20),
-    city VARCHAR (20);
+    city VARCHAR (20),
     PRIMARY KEY (zip)
-)
+);
 INSERT INTO zip VALUES
 ('11201', 'Brooklyn', 'NY')
 ('11202', 'Brooklyn', 'NY')
 ('11203', 'Brooklyn', 'NY')
 ('11385', 'Brooklyn', 'NY')
 ('11434', 'Queens', 'NY')
+
+
 
 
 
