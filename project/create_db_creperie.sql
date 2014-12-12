@@ -160,12 +160,25 @@ CREATE TABLE orders
     PRIMARY KEY (order_id)
 );
 INSERT INTO orders VALUES
-(1, 11, 1, 1, '3,65'),
+(1, 11, 1, 1, '3.65'),
 (2, 14, 5, 1, '3.65'),
-(3, 12, 8, 2, '5.45'),
-(4, 13, 6, 3, '4.35'),
+(3, 12, 8, 2, '5.65'),
+(4, 13, 6, 3, '4.65'),
 (5, 10, 7, 2, '3.65');
 
+
+CREATE TABLE order_range
+(
+    -- total_order_price functionally determines price_range
+    total_order_price DECIMAL(3,2) NOT NULL,
+    price_range VARCHAR(50) NOT NULL,
+    PRIMARY KEY (total_order_price)
+);
+INSERT INTO order_range VALUES
+('3.65', 'low'),
+('4.65', 'medium'),
+('5.65', 'high'),
+('6.65', 'plus');
 
 -- MVD - table's only pk is all 3 attributes.
 CREATE TABLE employee_delivery_area
@@ -177,11 +190,12 @@ CREATE TABLE employee_delivery_area
 INSERT INTO employee_delivery_area VALUES
 ('John Locke', 'Butter', 'Brooklyn'),
 ('John Locke', 'Cheese', 'Queens'),
-('Ranma Vincent', 'Strawnerries', 'Queens'),
+('Ranma Vincent', 'Strawberries', 'Queens'),
 ('Jack Shephard', 'Sugar', 'Queens');
 
 CREATE TABLE crepes_ordered
 (
+    -- 
     order_id INT NOT NULL,
     crepe_id INT NOT NULL REFERENCES ref_base_types(crepe_id),
     total_crepe_price DECIMAL(2,2) NOT NULL,
@@ -189,9 +203,9 @@ CREATE TABLE crepes_ordered
 );
 INSERT INTO crepes_ordered VALUES
 (1, 2, '3.65'),
-(2, 1, '3.40'),
+(2, 1, '3.65'),
 (3, 4, '3.65'),
-(4, 3, '4.35'),
+(4, 3, '4.65'),
 (5, 1, '3.65');
 
 
