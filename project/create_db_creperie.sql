@@ -48,43 +48,38 @@ CREATE TABLE addresses
     -- address_id functionally determines city, zip, state
     address_id INT NOT NULL,
     city VARCHAR(20),
-    zip VARCHAR(20),
     state VARCHAR(20),
     PRIMARY KEY (address_id)
 );
 INSERT INTO addresses VALUES
-(1, 'Brooklyn', '11201', 'NY'),
-(2, 'Brooklyn', '11201', 'NY'),
-(3, 'Brooklyn', '11202', 'NY'),
-(4, 'Queens', '11385', 'NY'),
-(5, 'Brooklyn', '11202', 'NY'),
-(6, 'Brooklyn', '11202', 'NY'),
-(7, 'Brooklyn', '11203', 'NY'),
-(8, 'Brooklyn', '11203', 'NY'),
-(9, 'Brooklyn', '11203', 'NY'),
-(10, 'Queens', '11385', 'NY'),
-(11, 'Queens', '11385', 'NY'),
-(12, 'Queens', '11434', 'NY'),
-(13, 'Queens', '11434', 'NY'),
-(14, 'Queens', '11434', 'NY');
+(1, 'Brooklyn', 'NY'),
+(2, 'Brooklyn', 'NY'),
+(3, 'Brooklyn', 'NY'),
+(4, 'Queens', 'NY'),
+(5, 'Brooklyn', 'NY'),
+(6, 'Brooklyn', 'NY'),
+(7, 'Brooklyn', 'NY'),
+(8, 'Brooklyn', 'NY'),
+(9, 'Brooklyn', 'NY'),
+(10, 'Queens', 'NY'),
+(11, 'Queens', 'NY'),
+(12, 'Queens', 'NY'),
+(13, 'Queens', 'NY'),
+(14, 'Queens', 'NY');
 
-CREATE TABLE zip_codes
+CREATE TABLE zip_states
 (
-    -- zip functionally determines state
+    -- zip functionally dtermines the state
     zip VARCHAR(20),
-    state VARCHAR(20),
-    city VARCHAR (20),
+    state VARCHAR(20),   
     PRIMARY KEY (zip)
 );
-INSERT INTO zip VALUES
-('11201', 'Brooklyn', 'NY')
-('11202', 'Brooklyn', 'NY')
-('11203', 'Brooklyn', 'NY')
-('11385', 'Brooklyn', 'NY')
-('11434', 'Queens', 'NY')
-
-
-
+INSERT INTO zip_states VALUES
+('11201', 'NY'),
+('11202', 'NY'),
+('11385', 'NY'),
+('11203', 'NY'),
+('11434', 'NY');
 
 
 
@@ -141,12 +136,17 @@ INSERT INTO car_types VALUES
 CREATE TABLE suppliers
 (
     -- supplier_id functionally determines supplier_address_id 
-    supplier_id INT, NOT NULL 
-    supplier_address_id INT, REFERENCES addresses(supplier_address_id)
-    supplier_name VARCHAR(50), NOT NULL
-    supplier_phone VARCHAR(50), NOT NULL
+    supplier_id INT NOT NULL,
+    supplier_address_id INT REFERENCES addresses(address_id),
+    supplier_name VARCHAR(50) NOT NULL,
+    supplier_phone VARCHAR(50) NOT NULL,
     PRIMARY KEY (supplier_id)
 );
+INSERT INTO suppliers VALUES
+(1, 2, 'Sugar For Days', '342-998-4938'),
+(2, 2, 'Moms Strawberries', '432-903-9830'),
+(3, 4, 'ChocoChoc', '312-334-9984'),
+(4, 1, 'BestEgg', '302-444-0098');
 
 
 CREATE TABLE orders

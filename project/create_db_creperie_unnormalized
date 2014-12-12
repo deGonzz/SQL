@@ -13,41 +13,30 @@ USE creperie;
 CREATE TABLE customers
 (
     -- FD customer_id functionally determines address/name/phone
+    -- payment_method_code functionally determines type (ref_payment_methods)
     customer_id INT NOT NULL,
-    payment_method_code INT REFERENCES ref_payment_methods(payment_method_code),
-    customer_address_id INT REFERENCES addresses(address_id),
+    payment_method_code INT,  
+    customer_address_id INT, 
+    payment_method_type TEXT,
     customer_name VARCHAR(50) NOT NULL,
     customer_phone VARCHAR(50) NOT NULL,
     PRIMARY KEY (customer_id)
 );
 
 INSERT INTO customers VALUES
-(22, 1, 10, 'Lizette Bouddhou', '734-987-0943'),
-(23, 2, 11, 'Julie Jones', '323-135-8640'),
-(24, 2, 12, 'Kevin Ox', '123-092-3202'),
-(25, 1, 13, 'John Locke', '434-321-8765'),
-(26, 3, 14, 'Ana Lucia', '222-555-5555');
+(22, 1, 10, 'Lizette Bouddhou', 'CREDIT', '734-987-0943'),
+(23, 2, 11, 'Julie Jones', 'DEBIT', '323-135-8640'),
+(24, 2, 12, 'Kevin Ox', 'DEBIT', '123-092-3202'),
+(25, 1, 13, 'John Locke', 'CREDIT', '434-321-8765'),
+(26, 3, 14, 'Ana Lucia', 'CASH', '222-555-5555');
 
 
 
-CREATE TABLE ref_payment_methods
-(
-    -- payment_method_code functionally determines type
-    payment_method_code INT NOT NULL,
-    payment_method_type TEXT,
-    PRIMARY KEY (payment_method_code)
-);
-
-INSERT INTO ref_payment_methods VALUES
-(1 , 'CREDIT'),
-(2 , 'DEBIT'),
-(3 , 'CASH');
 
 CREATE TABLE addresses
 (
     -- address_id functionally determines city, zip, state
-    -- zip determines state, city
-    
+    -- state functionally determines zip (zip_state)
     address_id INT NOT NULL,
     city VARCHAR(20),
     zip VARCHAR(20),
@@ -123,6 +112,12 @@ CREATE TABLE suppliers
     supplier_phone VARCHAR(50), NOT NULL
     PRIMARY KEY (supplier_id)
 );
+INSERT INTO suppliers VALUES
+(1, 2, 'Sugar For Days', '342-998-4938'),
+(2, 2, 'Moms Strawberries', '432-903-9830'),
+(3, 4, 'ChocoChoc', '312-334-9984'),
+(4, 1, 'BestEgg', '302-444-0098');
+
 
 
 CREATE TABLE orders
