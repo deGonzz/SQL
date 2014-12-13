@@ -61,47 +61,19 @@ WHERE employee_name in (
 	WHERE NOT employee_address_id > 4
 );
 
+-- A SET command and a nontrivial WHERE clause -- An UPDATE with a nontrivial WHERE clause
 
-
-
-
-
-
--- A SET command and a nontrivial WHERE clause
-
-
-
-
-
-
-
-
--- An UPDATE with a nontrivial WHERE clause
-
-
-
-
-
-
-
+UPDATE employees
+SET employee_name = 'HURLEY', employee_phone = '000-000-0000'
+WHERE employee_id = 2;
 
 -- A CREATE USER
 
-
-
-
-
-
-
-
+CREATE USER 'Louis'@'localhost';
 
 -- A DROP USER
 
-
-
-
-
-
-
+DROP USER 'Louis'@'localhost';
 
 -- A START TRANSACTION and a ROLLBACK
+
