@@ -64,7 +64,7 @@ WHERE employee_name in (
 -- A SET command and a nontrivial WHERE clause -- An UPDATE with a nontrivial WHERE clause
 
 UPDATE employees
-SET employee_name = 'HURLEY', employee_phone = '000-000-0000'
+SET employee_name = 'NEWHURLEY', employee_phone = '000-000-0000'
 WHERE employee_id = 2;
 
 -- A CREATE USER
@@ -76,4 +76,13 @@ CREATE USER 'Louis'@'localhost';
 DROP USER 'Louis'@'localhost';
 
 -- A START TRANSACTION and a ROLLBACK
+
+START TRANSACTION;
+UPDATE employees
+SET employee_name = 'NEWHURLEY', employee_phone = '000-000-0000'
+WHERE employee_id = 2;
+COMMIT;
+
+
+-- ROLLBACK [WORK] [AND [NO] CHAIN] [[NO] RELEASE]
 
