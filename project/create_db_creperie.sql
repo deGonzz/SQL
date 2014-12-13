@@ -89,7 +89,7 @@ CREATE TABLE employees
 (
     -- employee_id functionally determines address, name, phone
     employee_id INT NOT NULL,
-    employee_address_id INT REFERENCES addresses(employee_address_id),
+    employee_address_id INT REFERENCES addresses(address_id),
     employee_name VARCHAR(50),
     employee_phone VARCHAR(50),
     PRIMARY KEY (employee_id)
@@ -156,7 +156,7 @@ CREATE TABLE orders
     customer_id INT NOT NULL  REFERENCES addresses(customer_id),
     delivered_by_employee_id INT NOT NULL REFERENCES employees(employee_id),
     car_id INT NOT NULL REFERENCES cars(car_id),
-    total_order_price DECIMAL(2,2) NOT NULL,
+    total_order_price DECIMAL(3,2) NOT NULL REFERENCES order_range(total_order_price),
     PRIMARY KEY (order_id)
 );
 INSERT INTO orders VALUES
@@ -198,7 +198,7 @@ CREATE TABLE crepes_ordered
     -- 
     order_id INT NOT NULL,
     crepe_id INT NOT NULL REFERENCES ref_base_types(crepe_id),
-    total_crepe_price DECIMAL(2,2) NOT NULL,
+    total_crepe_price DECIMAL(3,2) NOT NULL,
     PRIMARY KEY (order_id)
 );
 INSERT INTO crepes_ordered VALUES
