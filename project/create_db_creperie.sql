@@ -48,24 +48,24 @@ CREATE TABLE addresses
     -- address_id functionally determines city, zip, state
     address_id INT NOT NULL,
     city VARCHAR(20),
-    state VARCHAR(20),
+    zip VARCHAR(20),
     PRIMARY KEY (address_id)
 );
 INSERT INTO addresses VALUES
-(1, 'Brooklyn', 'NY'),
-(2, 'Brooklyn', 'NY'),
-(3, 'Brooklyn', 'NY'),
-(4, 'Queens', 'NY'),
-(5, 'Brooklyn', 'NY'),
-(6, 'Brooklyn', 'NY'),
-(7, 'Brooklyn', 'NY'),
-(8, 'Brooklyn', 'NY'),
+(1, 'Brooklyn', '11201'),
+(2, 'Brooklyn', '11202'),
+(3, 'Brooklyn', '11201'),
+(4, 'Queens', '11385'),
+(5, 'Brooklyn', '11203'),
+(6, 'Brooklyn', '11202'),
+(7, 'Brooklyn', '11203'),
+(8, 'Brooklyn', '11202'),
 (9, 'Brooklyn', 'NY'),
-(10, 'Queens', 'NY'),
-(11, 'Queens', 'NY'),
-(12, 'Queens', 'NY'),
-(13, 'Queens', 'NY'),
-(14, 'Queens', 'NY');
+(10, 'Queens', '11385'),
+(11, 'Queens', '11385'),
+(12, 'Queens', '11434'),
+(13, 'Queens', '11434'),
+(14, 'Queens', '11434');
 
 CREATE TABLE zip_states
 (

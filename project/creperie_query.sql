@@ -1,7 +1,7 @@
 -- A simple SELECT FROM WHERE
 SELECT *
-FROM customers 
-WHERE customer_name='Lizette Bouddhou';
+FROM employees 
+WHERE employee_name ='Rachel Green';
 
 -- A SELECT FROM WHERE ORDER BY
 
@@ -79,9 +79,10 @@ DROP USER 'Louis'@'localhost';
 
 START TRANSACTION;
 UPDATE employees
-SET employee_name = 'NEWHURLEY', employee_phone = '000-000-0000'
+SET employee_name = 'Hugo Reyes', employee_phone = '888-888-8888'
 WHERE employee_id = 2;
 COMMIT;
+
 
 
 -- ROLLBACK [WORK] [AND [NO] CHAIN] [[NO] RELEASE]
