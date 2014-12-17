@@ -79,11 +79,15 @@ DROP USER 'Louis'@'localhost';
 
 START TRANSACTION;
 UPDATE employees
-SET employee_name = 'Hugo Reyes', employee_phone = '888-888-8888'
+SET employee_name = 'Hugo TEST', employee_phone = '888-888-8888'
 WHERE employee_id = 2;
-COMMIT;
+
+SELECT *
+FROM employees 
+
+ROLLBACK;
+SELECT *
+FROM employees 
 
 
-
--- ROLLBACK [WORK] [AND [NO] CHAIN] [[NO] RELEASE]
 
