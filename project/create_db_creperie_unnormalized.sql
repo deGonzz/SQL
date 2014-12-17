@@ -16,7 +16,7 @@ CREATE TABLE customers
     -- payment_method_code functionally determines type (ref_payment_methods)
     customer_id INT NOT NULL,
     payment_method_code INT,  
-    customer_address_id INT, 
+    customer_address_id INT NOT NULL REFERENCES addresses(address_id), 
     payment_method_type TEXT,
     customer_name VARCHAR(50) NOT NULL,
     customer_phone VARCHAR(50) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE suppliers
 (
     -- supplier_id functionally determines supplier_address_id, supplier_name, supplier_phone
     supplier_id INT NOT NULL,
-    supplier_address_id INT, 
+    supplier_address_id INT NOT NULL REFERENCES addresses(address_id), 
     supplier_name VARCHAR(50) NOT NULL,
     supplier_phone VARCHAR(50) NOT NULL,
     PRIMARY KEY (supplier_id)
